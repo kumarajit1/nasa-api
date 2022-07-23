@@ -4,49 +4,17 @@
         <title>Card API</title>
         <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
-        <script>
-
-            function LoadPhotos(){
-                fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY")
-                .then(function(response){
-                    return response.json();
-                })
-                .then(function(data){
-                     for(var item of data.photos)
-                     {
-                         var div = document.createElement("div");
-                         div.className = "card m-2 p-2";
-                         div.style.width = "400px"
-                         div.innerHTML = `
-                          <div class="d-flex">
-                            <div>
-                            <img src=${item.img_src} height="150" class="card-img-top">
-                            </div>
-                            <div class="justify-content-between">
-                                <dl>
-                                    <dt>Camera Id</dt>
-                                    <dd> ${item.id}</dd>
-                                    <dt>Camera Name</dt>
-                                    <dd>${item.camera.full_name}</dd>
-                                    <dt>Rover Name</dt>
-                                    <dd>${item.rover.name}</dd>
-                                </dl>
-                            </div>
-                          </div>
-                         `;
-                         document.getElementById("photosContainer").appendChild(div);
-                     }
-                })
-            }
-            function bodyload(){
-                LoadPhotos();
-            }
-        </script>
+        <script src="./javascript/api.js"></script>
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     </head>
     <body onload="bodyload()" class="container-fluid">
         <h2>Mars Rover Photos</h2>
         <div id="photosContainer">
 
         </div>
+
+        <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </body>
 </html>
